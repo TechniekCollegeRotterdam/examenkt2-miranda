@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\City;
 
 class CitySeeder extends Seeder
 {
@@ -9,8 +10,10 @@ class CitySeeder extends Seeder
      *
      * @return void
      */
+
+    //hij maakt 25 steden aan
     public function run()
     {
-        //
+        factory(City::class, 25)->create();
     }
 }
