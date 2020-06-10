@@ -165,7 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
-
+        //ophalen service provider
+        Spatie\Permission\PermissionServiceProvider::class,
         /*
          * Application Service Providers...
          */
