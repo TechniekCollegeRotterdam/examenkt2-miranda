@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\City;
-use App\Provice;
+use App\Province;
 use Illuminate\Http\Request;
 use App\Http\Requests\CitiesStoreRequest;
 use App\Http\Requests\CitiesUpdateRequest;
@@ -15,6 +15,15 @@ class CityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //zorgen dat
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:create city', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit city', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete city', ['only' => ['delete', 'destroy']]);
+    }
+
     //ophalen van de steden en returnen van de index.blade view
     public function index()
     {

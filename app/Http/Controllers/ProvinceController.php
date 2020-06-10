@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Province;
 use Illuminate\Http\Request;
-use App\Http\Requests\ProvinceStoreRequest;
-use App\Http\Requests\ProvinceUpdateRequest;
+use App\Http\Requests\ProvincesStoreRequest;
+use App\Http\Requests\ProvincesUpdateRequest;
 use Throwable;
 
 class ProvinceController extends Controller
@@ -15,6 +15,15 @@ class ProvinceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:create province', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit province', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete province', ['only' => ['delete', 'destroy']]);
+    }
+
     //haalt alle provincies op en returned de view
     public function index()
     {
